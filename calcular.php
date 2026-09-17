@@ -1,47 +1,48 @@
 <?php
-// Dados recebidos do formulário
-$nome = $_POST['tnome'];
-$anoNascimento = (int) $_POST['tano'];
+//ENTRADA
+$n1 = (float) $_POST['n1'];
+$n2 = (float) $_POST['n2'];
+//PROCESSAMENTO
+$adicao=$n1 + $n2;
+$subtracao = $n1 +$n2;
+$multiplicacao = $n1 * $n2;
+$divisao=$n1 / $n2;
+$modulo = $n1 % $n2;
+$potencia = $n1 ** $n2;
+$concatenacao=$n1.$n2; //o ponto ele JUNTA o texto, não soma como numero
 
-// Idade atual
-$anoAtual = (int) date('Y');
-$idade = $anoAtual - $anoNascimento;
-//considerar ano bissexto , entao 365.25
-$diasVividos = $idade * 365.25;
-$horasVividas = $diasVividos * 24;
-$minutosVividos = $horasVividas * 60;
-
-$bpmMedio = 75;
-$respiracoesPorMinuto = 17;
-
-$batimentosTotais = $minutosVividos * $bpmMedio;
-$respiracoesTotais = $minutosVividos * $respiracoesPorMinuto; //calcular e exibir também, o total de respiraçãoes
-
-$expectativaVida = 95;
-$anosRestantes = $expectativaVida - $idade;
-$batimentosRestantes = ($expectativaVida * 365.25 * 24 * 60 * $bpmMedio) - $batimentosTotais;
-$respiracoesRestantes =$batimentosRestantes * $respiracoesPorMinuto;
-
-//echo "<h2>$nome, sua idade é $idadeAtual</h2>";
-?>  <!-- FECHAR O PHP -->
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tempo de Vida</title>
+    <title>Operações Aritméticas</title>
+    <link rel="stylesheet" href="style.css">    
 </head>
 <body>
-    <h1>Tempo de vida</h1>
-    <hr>
-    <h2><?php echo $nome ?> sua idade é: <?php echo  number_format($idade,0,",",".") ?> anos</h2>
+    <div class="card">
+        <h1 align="center">Operações Aritméticas</h1>
+        <h2 align="center">Resultados</h1>
+        <hr>
+        <!-- apresentar os resultados(SAIDA) que o PHP gerou -->
+        <h3>
+            <?php echo "$n1 + $n2 = $adicao"; ?>
+        </h3>
+        <h3>
+            <?php echo "$n1 - $n2 = $subtracao"; ?>
+        </h3>
+        <h3>
+            <?php echo "$n1 x $n2 = $multiplicacao"; ?>
+        </h3>
+        <h3>
+            <?php echo "$n1 ÷ $n2 = ".number_format($divisao,2,',','.') ; ?>
+        </h3>
+        <h3>
+            <?php echo "$n1 <sup> $n2 </sup> =".number_format($potencia,2,',','.'); ?>
+        </h3>
+        <a href="index.php">Voltar</a>
+    </div>    
     
 </body>
 </html>
-
-
-
-/*
-
-
-*/
